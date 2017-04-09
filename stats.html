@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Graph</title>
+    <script type="text/javascript" src="canvasjs.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin-right: 40px;
+        margin-bottom: 40px;
+        z-index: 900;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
+            <div class="mdl-layout__header-row">
+
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+
+
+                <div class="demo-avatar-dropdown">
+  </header>
+
+        </div>
+        <main class="mdl-layout__content mdl-color--grey-100">
+
+                <script type="text/javascript">
+                var config = {
+                    apiKey: "AIzaSyAr21BJp_Jruj-Z3OShfcl55ClbefqPdd4",
+                    authDomain: "hshacks-4d484.firebaseapp.com",
+                    databaseURL: "https://hshacks-4d484.firebaseio.com",
+                    storageBucket: "hshacks-4d484.appspot.com",
+                    messagingSenderId: "334564840194"
+                };
+                firebase.initializeApp(config);
+
+                var database = firebase.database();
+                var reference = database.ref();
+                /*
+                    reference.on("value",function(snapshot){
+                            addData(snapshot.val());
+                        });
+                */
+                function writeData(location, name, value) {
+                    database.ref(location).update({
+                        [name]: value,
+                    });
+                }
+
+                function resetDatabase() {
+                    database.ref().set(null);
+                }
+                reference.on("value", function(snapshot) {
+                    addData(snapshot.val());
+                });
+
+
+                var chart;
+
+                function addData(value) {
+                    //chart.options.title.text = "New DataPoint Added at the end";
+                    chart.options.data[0].dataPoints.push({
+                        y: parseInt(value)
+                    });
+                    chart.render();
+                    console.log(value + " was added");
+                    ajax();
+                }
+
+                function fixData(index, value) {
+                    var length = chart.options.data[0].dataPoints.length;
+                    //chart.options.title.text = "Last DataPoint Updated";
+                    chart.options.data[0].dataPoints[length - 1].y = parseInt(index);
+                    chart.render();
+                    console.log(value + " was changed at " + index);
+                }
+
+                function resetChart() {
+
+                    chart = new CanvasJS.Chart("chartContainer", {
+                        title: {
+                            text: "Beacon Distance"
+                        },
+                        data: [{
+                            type: "spline",
+                            dataPoints: [{
+
+                            }]
+                        }]
+                    });
+                    chart.render();
+                }
+
+                window.onload = function() {
+                    resetChart();
+
+                }
+
+                function ajax() {
+                    $.ajax({
+                        url: "https://smarttardy.herokuapp.com",
+                        method: "GET",
+                        success: function(data) {
+                            addData(data*1000);
+                        }
+                    });
+                }
+                </script>
+                <div id="chartContainer" style="width:100%; height:280px"></div>
+</body>
+
+</html>

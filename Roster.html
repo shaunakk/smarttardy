@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Smarttardy</title>
+    <title>Smarttardy - Connect</title>
     <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -37,7 +37,7 @@
 
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-      <img src="Slice1.png" style="width:90%" style="margin":"50%">
+            <img src="Slice1.png" style="width:90%" style="margin":"50%">
           <div class="demo-avatar-dropdown">
             <span>epicshaunak@gmail.com</span>
             <div class="mdl-layout-spacer"></div>
@@ -55,30 +55,70 @@
           <a class="mdl-navigation__link" href="index.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
           <a class="mdl-navigation__link" href="graph.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">history</i>History</a>
           <a class="mdl-navigation__link" href="settings.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">settings</i>Settings</a>
-                   <a class="mdl-navigation__link" href="Roster.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Roster</a>
+                    <a class="mdl-navigation__link" href="Roster.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Roster</a>
          <a class="mdl-navigation__link" href="connect.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">link</i>Connect</a>
-  <a class="mdl-navigation__link" href="about.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help</i>about</a>
+                  <a class="mdl-navigation__link" href="about.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help</i>about</a>
           <div class="mdl-layout-spacer"></div>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
         <div style="text-align: center; color:#abb8cc">
-      <h1> Settings</h1>
-      <br>
-      <br>
+          <center><h2 style="text-align: center; color:#abb8cc" >Roster</h2></center>
+          <center>
+            <script>
+            window.setTimeout(
+              function(){
+                $("#tardy1").html("<b>Yes</b>")
+                $("#tardy2").html("<b>No</b>")
+                $(".mdl-spinner").remove()
+              },
+              15000
+            )
+            </script>
+              <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+                <thead>
+                  <tr>
+                    <th >Students</th>
+                    <th></th>
+                    <th>Tardy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
 
-      <table style="margin:auto">
-         <tr><td><h3>Leeway Time</h3></td></tr>
-         <tr><td><input id="slider1" class="mdl-slider mdl-js-slider" type="range"
-            min="0" max="100" value="0" tabindex="0"
-            oninput="showMessage(this.value)" onchange="showMessage(this.value)" ></td>
-
-
-         </tr>
-      </table>
-       <h6 id="message" >0 minutes</h6>
-    </div>
+                    <td class="mdl-data-table__cell--non-numeric"><div class="mdl-spinner mdl-js-spinner is-active"></div><mark>Adnan Ahmed</mark></td>
+                    <td></td>
+                    <td><div id="tardy1"<div/></td>
+                  </tr>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric"><div class="mdl-spinner mdl-js-spinner is-active"></div><mark>Adil Bukhari</mark></td>
+                    <td></td>
+                    <td><div id="tardy2"<div/></td>
+                  </tr>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Tod Sanders</td>
+                    <td></td>
+                    <td>Yes</td>
+                  </tr>
+                    <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Larry Payne</td>
+                    <td></td>
+                    <td>Yes</td>
+                  </tr>
+                    <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Cory Young</td>
+                    <td></td>
+                    <td>Yes</td>
+                  </tr>
+                    <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Sandy James</td>
+                    <td></td>
+                    <td>No</td>
+                  </tr>
+                </tbody>
+              </table>
+          </center>
     <!-- Slider with Starting Value -->
 
     </div>
